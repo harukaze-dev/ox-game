@@ -1,5 +1,7 @@
+<!-- 08 ox game\ox game_250628_02\public\index.html -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>OX 퀴즈 게임</title>
     <link rel="stylesheet" href="/common.css" />
@@ -7,10 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="toast-popup" class="hidden"></div>
+
     <div id="main-menu">
-        <div class="lobby-header"><h1>OX 퀴즈 게임</h1><p>새로운 방을 만들거나 코드로 참여하세요.</p></div>
+        <div class="lobby-header">
+            <h1>OX 퀴즈 게임</h1>
+            <p>새로운 방을 만들거나 코드로 참여하세요.</p>
+        </div>
         <button id="create-room-btn" class="main-menu-btn">새로운 방 만들기</button>
         <div class="divider">또는</div>
         <div id="join-form">
@@ -18,25 +25,46 @@
             <button id="join-room-btn">코드로 참여하기</button>
         </div>
     </div>
+
     <div id="profile-setup" class="hidden">
-        <div class="lobby-header"><h1 id="profile-setup-title">프로필 설정</h1><p id="profile-setup-description"></p></div>
+        <div class="lobby-header">
+            <h1 id="profile-setup-title">프로필 설정</h1>
+            <p id="profile-setup-description"></p>
+        </div>
         <div class="form-group role-selection">
             <input type="radio" name="role" value="fan" id="role-fan" checked><label for="role-fan" class="role-label">💖 팬</label>
             <input type="radio" name="role" value="streamer" id="role-streamer"><label for="role-streamer" class="role-label">🎮 스트리머</label>
         </div>
-        <div id="streamer-options" class="form-group hidden"><select id="streamer-select"></select><input id="streamer-key-input" type="password" placeholder="스트리머 인증 키" autocomplete="off"></div>
+        <div id="streamer-options" class="form-group hidden">
+            <select id="streamer-select"></select>
+            <input id="streamer-key-input" type="password" placeholder="스트리머 인증 키" autocomplete="off">
+        </div>
         <div id="fan-options">
              <div id="fan-group-display" class="form-group hidden"></div>
-             <div id="fan-multi-streamer-options" class="form-group hidden"><label for="fan-group-select">응원할 스트리머 선택</label><select id="fan-group-select"></select></div>
+             <div id="fan-multi-streamer-options" class="form-group hidden">
+                <label for="fan-group-select">응원할 스트리머 선택</label>
+                <select id="fan-group-select"></select>
+            </div>
         </div>
-        <div class="form-group" id="nickname-group"><input id="nickname-input" type="text" placeholder="닉네임을 입력하세요" autocomplete="off" required></div>
-        <button id="confirm-profile-btn">입장하기</button><button id="back-to-lobby-btn" class="secondary-btn">뒤로가기</button>
+        <div class="form-group" id="nickname-group">
+            <input id="nickname-input" type="text" placeholder="닉네임을 입력하세요" autocomplete="off" required>
+        </div>
+        <button id="confirm-profile-btn">입장하기</button>
+        <button id="back-to-lobby-btn" class="secondary-btn">뒤로가기</button>
     </div>
+
     <div id="game-container" class="hidden">
         <div id="game-board">
-            <!-- [수정] 숫자 타이머(timer-display)를 삭제하고, 게이지 바(progress-bar-container) 추가 -->
             <div id="question-display">
-                <div id="question-content"><div class="lobby-message"><h2>게임 대기 중...</h2><p>방장이 게임을 시작할 때까지 기다려주세요.</p><div id="room-code-area" class="hidden"><button id="copy-code-btn">📋  초대 코드 복사</button></div></div></div>
+                <div id="question-content">
+                    <div class="lobby-message">
+                        <h2>게임 대기 중...</h2>
+                        <p>방장이 게임을 시작할 때까지 기다려주세요.</p>
+                        <div id="room-code-area" class="hidden">
+                            <button id="copy-code-btn">📋  초대 코드 복사</button>
+                        </div>
+                    </div>
+                </div>
                 <div id="progress-bar-container" class="hidden">
                     <div id="progress-bar"></div>
                 </div>
@@ -56,25 +84,91 @@
             <div id="eliminated-area"></div>
         </div>
         <div id="host-controls" class="hidden">
-            <button id="start-game-btn">게임 시작</button><button id="new-question-btn" class="hidden">문제 출제</button><button id="end-round-btn" class="hidden">정답 확인</button>
-            <button id="revival-btn" class="hidden">패자부활전</button><button id="reset-game-btn" class="hidden">게임 초기화</button><button id="leave-room-btn">방 나가기</button>
+            <button id="start-game-btn">게임 시작</button>
+            <button id="new-question-btn" class="hidden">문제 출제</button>
+            <button id="end-round-btn" class="hidden">정답 확인</button>
+            <button id="revival-btn" class="hidden">패자부활전</button>
+            <button id="reset-game-btn" class="hidden">게임 초기화</button>
+            <button id="leave-room-btn">방 나가기</button>
         </div>
     </div>
+
     <div id="create-question-modal" class="modal-overlay hidden">
-        <div class="modal-content"><h2 id="modal-title">문제 출제</h2>
+        <div class="modal-content">
+            <h2 id="modal-title">문제 출제</h2>
             <form id="question-form">
-                <div class="form-group"><label for="question-text">문제 내용</label><textarea id="question-text" rows="3" required></textarea></div>
-                <div class="form-group"><label>문제 유형</label><div class="question-type-selection"><input type="radio" name="question-type" value="2" id="type-ox" checked><label for="type-ox">O/X</label><input type="radio" name="question-type" value="2" id="type-2"><label for="type-2">2지선다</label><input type="radio" name="question-type" value="3" id="type-3"><label for="type-3">3지선다</label><input type="radio" name="question-type" value="4" id="type-4"><label for="type-4">4지선다</label></div></div>
-                <div class="form-group"><label for="question-timer-input">제한 시간 (초)</label><input type="number" id="question-timer-input" value="20" min="5" max="120"></div>
-                <div id="choices-input-area"></div><div class="modal-buttons"><button type="submit">출제하기</button><button type="button" id="cancel-question-btn">취소</button></div>
+                <div class="form-group">
+                    <label for="question-text">문제 내용</label>
+                    <textarea id="question-text" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>문제 유형</label>
+                    <div class="question-type-selection">
+                        <input type="radio" name="question-type" value="2" id="type-ox" checked><label for="type-ox">O/X</label>
+                        <input type="radio" name="question-type" value="2" id="type-2"><label for="type-2">2지선다</label>
+                        <input type="radio" name="question-type" value="3" id="type-3"><label for="type-3">3지선다</label>
+                        <input type="radio" name="question-type" value="4" id="type-4"><label for="type-4">4지선다</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="question-timer-input">제한 시간 (초)</label>
+                    <input type="number" id="question-timer-input" value="20" min="5" max="120">
+                </div>
+                <div id="choices-input-area"></div>
+                <div class="modal-buttons">
+                    <button type="submit">출제하기</button>
+                    <button type="button" id="cancel-question-btn">취소</button>
+                </div>
             </form>
         </div>
     </div>
+
     <div id="select-questioner-modal" class="modal-overlay hidden">
-        <div class="modal-content"><h2 id="select-questioner-title">문제 출제자 선택</h2><p>누가 문제를 출제할지 선택해주세요.</p><div id="questioner-list"></div><div class="modal-buttons"><button type="button" id="cancel-select-questioner-btn">취소</button></div></div>
+        <div class="modal-content">
+            <h2 id="select-questioner-title">문제 출제자 선택</h2>
+            <p>누가 문제를 출제할지 선택해주세요.</p>
+            <div id="questioner-list"></div>
+            <div class="modal-buttons">
+                <button type="button" id="cancel-select-questioner-btn">취소</button>
+            </div>
+        </div>
     </div>
-    <div id="kick-confirm-modal" class="modal-overlay hidden"><div class="modal-content"><h2>플레이어 강퇴</h2><p><strong id="kick-player-name"></strong> 님을 방에서 내보내시겠습니까?</p><div class="modal-buttons"><button id="confirm-kick-btn" class="danger-btn">강퇴</button><button id="cancel-kick-btn">취소</button></div></div></div>
-    <div id="game-over-modal" class="modal-overlay hidden"><div class="modal-content"><h1>🎉 최종 우승! 🎉</h1><div id="winner-info"></div><p>축하합니다! 게임의 승자가 되셨습니다!</p><button id="game-over-close-btn">확인</button></div></div>
-    <script src="/socket.io/socket.io.js"></script><script src="/client.js"></script>
+
+    <div id="kick-confirm-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>플레이어 강퇴</h2>
+            <p><strong id="kick-player-name"></strong> 님을 방에서 내보내시겠습니까?</p>
+            <div class="modal-buttons">
+                <button id="confirm-kick-btn" class="danger-btn">강퇴</button>
+                <button id="cancel-kick-btn">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-over-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h1>🎉 최종 우승! 🎉</h1>
+            <div id="winner-info"></div>
+            <p>축하합니다! 게임의 승자가 되셨습니다!</p>
+            <button id="game-over-close-btn">확인</button>
+        </div>
+    </div>
+    
+    <div id="emotion-popup" class="modal-overlay hidden" style="background-color: transparent;">
+        <div id="emotion-options">
+            <span data-emoji="❤️">❤️</span>
+            <span data-emoji="💢">💢</span>
+            <span data-emoji="💦">💦</span>
+            <span data-emoji="💤">💤</span>
+            <span data-emoji="👋">👋</span>
+            <span data-emoji="👌">👌</span>
+            <span data-emoji="👍">👍</span>
+            <span data-emoji="👎">👎</span>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
 </body>
+
 </html>
