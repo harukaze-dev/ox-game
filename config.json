@@ -1,0 +1,76 @@
+{
+    "streamers": [
+        {
+            "id": "yeonri",
+            "name": "연리",
+            "pfp": "/images/streamer_yeonri.png",
+            "color": "#D3B8FE",
+            "textColor": "#2d3748",
+            "fandom": {
+                "id": "yeonbab",
+                "name": "연밥",
+                "pfp": "/images/fan_yeonbab.png"
+            }
+        },
+        {
+            "id": "morara",
+            "name": "모라라",
+            "pfp": "/images/streamer_morara.png",
+            "color": "#F4979F",
+            "textColor": "#2d3748",
+            "fandom": {
+                "id": "coral",
+                "name": "코랄단",
+                "pfp": "/images/fan_coral.png"
+            }
+        },
+        {
+            "id": "haeblin",
+            "name": "해블린",
+            "pfp": "/images/streamer_haeblin.png",
+            "color": "#C8D7FF",
+            "textColor": "#2d3748",
+            "fandom": {
+                "id": "digdan",
+                "name": "디그단",
+                "pfp": "/images/fan_digdan.png"
+            }
+        },
+        {
+            "id": "gyechunhoe",
+            "name": "계춘회",
+            "pfp": "/images/streamer_gyechunhoe.png",
+            "color": "#F8E2BD",
+            "textColor": "#2d3748",
+            "fandom": {
+                "id": "chunsik",
+                "name": "춘식이",
+                "pfp": "/images/fan_chunsik.png"
+            }
+        },
+        {
+            "id": "eaglecop",
+            "name": "이글콥",
+            "pfp": "/images/streamer_eaglecop.png",
+            "color": "#1B6DD0",
+            "textColor": "#ffffff",
+            "fandom": {
+                "id": "benchdan",
+                "name": "벤치단",
+                "pfp": "/images/fan_benchdan.png"
+            }
+        },
+        {
+            "id": "yubomnyang",
+            "name": "유봄냥",
+            "pfp": "/images/streamer_yubomnyang.png",
+            "color": "#F3E370",
+            "textColor": "#2d3748",
+            "fandom": {
+                "id": "hamjji",
+                "name": "햄찌",
+                "pfp": "/images/fan_hamjji.png"
+            }
+        }
+    ]
+}
