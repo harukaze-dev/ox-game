@@ -12,6 +12,11 @@ const io = new Server(server);
 
 app.use(express.static(__dirname + '/public'));
 
+// >> 여기에 헬스 체크 엔드포인트를 추가하세요 <<
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 const rooms = new Map();
 
 function generateRoomId() { return Math.random().toString(36).substring(2, 8).toUpperCase(); }
